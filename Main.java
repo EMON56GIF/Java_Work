@@ -1,29 +1,39 @@
-class car {
+import java.util.Scanner;
 
-    String name;
-    String model;
-    String engine;
-
+class Car {
     void display() {
-
-    System.out.println("Brand of car is:" + name);
-    System.out.println("Model of car is:" + model);
-    System.out.println("Brand of car is:" + engine);
+        System.out.println("This is a car.");
     }
 }
 
+class ElectricCar extends Car {
+    @Override
+    void display() {
+        System.out.println("This is an Electric Car.");
+    }
+}
 
+class PetrolCar extends Car {
+    @Override
+    void display() {
+        System.out.println("This is a Petrol Car.");
+    }
+}
 
 public class Main {
     public static void main(String[] args) {
-
-        car c1 = new car();
-
-        c1.name = "BURUMM";
-        c1.model = "dhoom";
-        c1.engine = "v16";
-
-        c1.display();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter car type (electric/petrol): ");
+        String type = sc.nextLine();
+        
+        Car car;
+        if (type.equalsIgnoreCase("electric")) {
+            car = new ElectricCar();
+        } else {
+            car = new PetrolCar();
+        }
+        
+        car.display();
+        sc.close();
     }
-
 }
